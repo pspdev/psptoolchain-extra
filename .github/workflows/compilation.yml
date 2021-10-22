@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  repository_dispatch:
+    types: [run_build]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: ghcr.io/fjtrujy/pspsdk:latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: |
+        apk add build-base bash git python3 py3-pip cmake m4 pkgconfig libarchive-tools libarchive-dev openssl-dev gpgme-dev \
+          curl-dev asciidoc asciidoctor
+
+    - name: Compile PKGConf
+      run: |
+        ./build-all.sh
