@@ -16,7 +16,7 @@ jobs:
     - name: Install dependencies
       run: |
         apk add build-base bash git python3 py3-pip cmake m4 pkgconfig libarchive-tools libarchive-dev openssl-dev gpgme-dev \
-          curl-dev asciidoc asciidoctor
+          curl-dev asciidoc asciidoctor autoconf automake libtool
 
     - name: Compile PKGConf
       run: |
