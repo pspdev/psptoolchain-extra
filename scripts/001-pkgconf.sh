@@ -20,6 +20,7 @@ TARG_XTRA_OPTS=""
     --quiet \
     --prefix="$PSPDEV" \
     --program-prefix="$TARGET-" \
+    --with-pkg-config-dir="$PSPDEV"/psp/lib/pkgconfig
     $TARG_XTRA_OPTS || { exit 1; }
 
 # Compile and install.
