@@ -7,7 +7,7 @@ on:
     types: [run_build]
 
 jobs:
-  build:
+  build-docker:
     runs-on: ubuntu-latest
     container: ghcr.io/fjtrujy/pspsdk:latest
     steps:
@@ -15,9 +15,52 @@ jobs:
 
     - name: Install dependencies
       run: |
-        apk add build-base bash git python3 py3-pip cmake m4 pkgconfig libarchive-tools libarchive-dev openssl-dev gpgme-dev \
-          curl-dev asciidoc asciidoctor autoconf automake libtool
+        apk add build-base bash git autoconf automake python3 py3-pip cmake pkgconfig libarchive-dev openssl-dev gpgme-dev libtool
 
-    - name: Compile PKGConf
+    - name: Compile Tools
       run: |
+        ./build-all.sh
+
+  build-VM:
+    runs-on: ${{ matrix.os[0] }}
+    strategy:
+      matrix:
+        os: [[macos-latest, bash], [ubuntu-latest, bash]]
+      fail-fast: false
+    defaults:
+     run:
+      shell: ${{ matrix.os[1] }} {0}
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install Ubuntu texinfo bison flex libucl-dev
+      if: matrix.os[0] == 'ubuntu-latest'
+      run: |
+        sudo apt-get -y install libarchive-dev
+        echo "MSYSTEM=x64" >> $GITHUB_ENV
+
+    - name: Install Mac texinfo bison flex ucl
+      if: matrix.os[0] == 'macOS-latest'
+      run: |
+        brew install automake libarchive gpgme bash openssl libtool
+        echo "MSYSTEM=x64" >> $GITHUB_ENV
+
+    # - name: Install MSYS2 texinfo bison flex
+    #   if: matrix.os[0] == 'windows-latest'
+    #   uses: msys2/setup-msys2@v2
+    #   with:
+    #     msystem: MINGW32
+    #     install: |
+    #       base-devel git make texinfo flex bison patch binutils mingw-w64-i686-gcc mpc-devel tar
+    #       mingw-w64-i686-cmake mingw-w64-i686-extra-cmake-modules mingw-w64-i686-make
+    #     update: true
+    #     shell: msys2 {0}
+
+    - name: Compile Tools
+      run: |
+        PATH="/usr/local/opt/libtool/libexec/gnubin:$PATH"
+        export PKG_CONFIG_PATH="/usr/local/opt/libarchive/lib/pkgconfig:/usr/local/opt/openssl@3/lib/pkgconfig"
+        export PSPDEV=$PWD/pspdev
+        export PATH=$PATH:$PSPDEV/bin
         ./build-all.sh
