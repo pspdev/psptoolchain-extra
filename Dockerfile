@@ -1,10 +1,12 @@
-ARG BASE_DOCKER_IMAGE
+# First stage
+FROM alpine:latest
 
-FROM $BASE_DOCKER_IMAGE
+ENV PSPDEV /usr/local/pspdev
+ENV PATH $PATH:${PSPDEV}/bin
 
 COPY . /src
 
-RUN apk add build-base bash git autoconf automake python3 py3-pip cmake pkgconfig libarchive-dev openssl-dev gpgme-dev libtool
+RUN apk add build-base bash git autoconf automake python3 py3-pip cmake pkgconfig libarchive-dev openssl-dev libtool
 RUN cd /src && ./build-all.sh
 
 # Second stage of Dockerfile

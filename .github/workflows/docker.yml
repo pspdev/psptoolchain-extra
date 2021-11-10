@@ -44,18 +44,16 @@ jobs:
       with:
         push: true
         tags: ghcr.io/${{ github.repository }}:${{ env.DOCKER_TAG }}
-        build-args: |
-          BASE_DOCKER_IMAGE=ghcr.io/${{ github.repository_owner }}/pspsdk:${{ env.DOCKER_TAG }}
     
     - name: Send Compile action
       run: |
         export DISPATCH_ACTION="$(echo run_build)"
         echo "NEW_DISPATCH_ACTION=$DISPATCH_ACTION" >> $GITHUB_ENV
 
-    - name: Repository Dispatch to psp-packages
-      uses: peter-evans/repository-dispatch@v1
-      with:
-        repository: ${{ github.repository_owner }}/psp-packages
-        token: ${{ secrets.DISPATCH_TOKEN }}
-        event-type: ${{ env.NEW_DISPATCH_ACTION }}
-        client-payload: '{"ref": "${{ github.ref }}"}'
+    # - name: Repository Dispatch to psptoolchain
+    #   uses: peter-evans/repository-dispatch@v1
+    #   with:
+    #     repository: ${{ github.repository_owner }}/psptoolchain
+    #     token: ${{ secrets.DISPATCH_TOKEN }}
+    #     event-type: ${{ env.NEW_DISPATCH_ACTION }}
+    #     client-payload: '{"ref": "${{ github.ref }}"}'
