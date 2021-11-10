@@ -10,6 +10,7 @@ header_paths=(
     "/usr/local/include/$(uname -m)-linux-gnu" \
     "/usr/include/i386-linux-gnu" \
     "/usr/local/include/i386-linux-gnu"
+    "/mingw32/include/"
     # -- Add more locations here --
 )
 
@@ -56,7 +57,6 @@ fi
 
 check_program   git
 check_program   patch
-check_program   wget
 check_program   autoconf
 check_program   automake
 

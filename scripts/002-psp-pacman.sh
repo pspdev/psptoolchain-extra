@@ -14,5 +14,11 @@ fi
 ## Determine the maximum number of processes that Make can work with.
 PROC_NR=$(getconf _NPROCESSORS_ONLN)
 
+# TODO: Fix PACMAN compilation issues for Windows
+OSVER=$(uname)
+if [ "${OSVER:0:5}" == MINGW ]; then
+	exit 0;
+fi
+
 ## Compile and install.
 ./pacman.sh || { exit 1; }
