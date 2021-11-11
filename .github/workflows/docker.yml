@@ -50,10 +50,10 @@ jobs:
         export DISPATCH_ACTION="$(echo run_build)"
         echo "NEW_DISPATCH_ACTION=$DISPATCH_ACTION" >> $GITHUB_ENV
 
-    # - name: Repository Dispatch to psptoolchain
-    #   uses: peter-evans/repository-dispatch@v1
-    #   with:
-    #     repository: ${{ github.repository_owner }}/psptoolchain
-    #     token: ${{ secrets.DISPATCH_TOKEN }}
-    #     event-type: ${{ env.NEW_DISPATCH_ACTION }}
-    #     client-payload: '{"ref": "${{ github.ref }}"}'
+    - name: Repository Dispatch to psptoolchain
+      uses: peter-evans/repository-dispatch@v1
+      with:
+        repository: ${{ github.repository_owner }}/psptoolchain
+        token: ${{ secrets.DISPATCH_TOKEN }}
+        event-type: ${{ env.NEW_DISPATCH_ACTION }}
+        client-payload: '{"ref": "${{ github.ref }}"}'

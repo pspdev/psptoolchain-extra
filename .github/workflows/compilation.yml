@@ -24,7 +24,7 @@ jobs:
     - name: Install dependencies Fedora
       if: matrix.os[0] == 'fedora'
       run: |
-        dnf -y install @development-tools g++ git autoconf automake python3 python3-pip cmake pkgconf libarchive-devel openssl-devel libtool
+        dnf -y install @development-tools g++ wget git autoconf automake python3 python3-pip cmake pkgconf libarchive-devel openssl-devel libtool
 
     - name: Compile Tools
       run: |
@@ -36,7 +36,7 @@ jobs:
     runs-on: ${{ matrix.os[0] }}
     strategy:
       matrix:
-        os: [[macos-latest, bash], [macOS-11, bash], [ubuntu-latest, bash], [windows-latest, msys2]]
+        os: [[macos-latest, bash], [macos-11, bash], [ubuntu-latest, bash], [windows-latest, msys2]]
     defaults:
      run:
       shell: ${{ matrix.os[1] }} {0}
@@ -44,14 +44,14 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Install Dependencies Ubuntu 
+    - name: Install on Ubuntu
       if: matrix.os[0] == 'ubuntu-latest'
       run: |
         sudo apt-get -y install libarchive-dev
         echo "MSYSTEM=x64" >> $GITHUB_ENV
 
     - name: Install Dependencies Mac
-      if: startsWith( matrix.os[0], 'macOS' )
+      if: startsWith( matrix.os[0], 'macos' )
       run: |
         brew install automake libarchive bash openssl libtool
         echo "MSYSTEM=x64" >> $GITHUB_ENV
@@ -69,7 +69,7 @@ jobs:
 
     - name: Compile Tools
       run: |
-        PATH="/usr/local/opt/libtool/libexec/gnubin:$PATH"
+        export PATH="/usr/local/opt/libtool/libexec/gnubin:$PATH"
         export PKG_CONFIG_PATH="/usr/local/opt/libarchive/lib/pkgconfig:/usr/local/opt/openssl@3/lib/pkgconfig"
         export PSPDEV=$PWD/pspdev
         export PATH=$PATH:$PSPDEV/bin

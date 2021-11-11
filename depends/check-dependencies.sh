@@ -9,7 +9,7 @@ header_paths=(
     "/usr/include/$(uname -m)-linux-gnu" \
     "/usr/local/include/$(uname -m)-linux-gnu" \
     "/usr/include/i386-linux-gnu" \
-    "/usr/local/include/i386-linux-gnu"
+    "/usr/local/include/i386-linux-gnu" \
     "/mingw32/include/"
     # -- Add more locations here --
 )
