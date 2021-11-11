@@ -60,8 +60,13 @@ check_program   patch
 check_program   autoconf
 check_program   automake
 
+# Disabled pacman for windows
+if [ "${OSVER:0:5}" != MINGW ]; then
 check_program   python3
 check_program   pip3
+check_header    openssl             openssl/crypto.h openssl/include/openssl/crypto.h
+check_header    libarchive          archive.h libarchive/include/archive.h
+fi
 
 check_program   make
 check_program   cmake
@@ -69,9 +74,6 @@ check_program   gcc
 check_program   g++
 
 check_program   libtoolize
-
-check_header    libarchive          archive.h libarchive/include/archive.h
-check_header    openssl             openssl/crypto.h openssl/include/openssl/crypto.h
 
 if [ ${#missing_depends[@]} -ne 0 ]; then
     echo "Couldn't find dependencies:"
