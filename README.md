@@ -13,7 +13,7 @@ How do I use it?
 
 1. Set up your environment by installing the following software:
 
-        bg++/gcc-c++, gcc, git, autoconf, automake, python3, py3-pip, cmake, pkgconfig, libarchive, openssl and libtool
+        bg++/gcc-c++, gcc, git, autoconf, automake, python3, py3-pip, cmake, pkgconfig, libarchive, openssl, gpmdev and libtool
 
 2. Set the PSPDEV and PATH environmental variables:
 

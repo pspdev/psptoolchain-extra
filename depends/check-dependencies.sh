@@ -50,6 +50,8 @@ function check_program
     missing_depends+=($1); return 1
 }
 
+OSVER=$(uname)
+
 # macOS catalina does not ship headers in default directory anymore
 if [ "$(uname)" == "Darwin" ]; then
   header_paths+=("`xcrun --show-sdk-path`/usr/include")
@@ -64,6 +66,7 @@ check_program   automake
 if [ "${OSVER:0:5}" != MINGW ]; then
 check_program   python3
 check_program   pip3
+check_program   gpgme-config
 check_header    openssl             openssl/crypto.h openssl/include/openssl/crypto.h
 check_header    libarchive          archive.h libarchive/include/archive.h
 fi
