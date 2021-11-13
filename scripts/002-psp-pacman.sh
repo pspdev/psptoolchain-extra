@@ -2,7 +2,7 @@
 # psp-pacman.sh by fjtrujy
 
 ## Download the source code.
-REPO_URL="https://github.com/fjtrujy/psp-pacman"
+REPO_URL="https://github.com/pspdev/psp-pacman"
 REPO_FOLDER="psp-pacman"
 BRANCH_NAME="master"
 if test ! -d "$REPO_FOLDER"; then
