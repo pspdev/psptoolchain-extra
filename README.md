@@ -8,6 +8,11 @@ This program will automatically build and install extra tools
 used in the creation of homebrew software for the Sony Playstation Portable
 handheld videogame system.
 
+These scripts download (`git clone`) and install:
+
+-   [pkgconf](https://github.com/pkgconf/pkgconf "pkgconf")
+-   [psp-pacman](https://github.com/pspdev/psp-pacman "psp-pacman")
+
 How do I use it?
 ==================
 
