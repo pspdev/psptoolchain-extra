@@ -10,8 +10,12 @@ handheld videogame system.
 
 These scripts download (`git clone`) and install:
 
--   [pkgconf](https://github.com/pkgconf/pkgconf "pkgconf")
 -   [psp-pacman](https://github.com/pspdev/psp-pacman "psp-pacman")
+
+It also installs the following wrapper scripts:
+
+- psp-cmake
+- psp-pkg-config
 
 How do I use it?
 ==================
