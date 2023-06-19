@@ -1,5 +1,5 @@
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/pspdev/psptoolchain-extra/CI?label=CI&logo=github&style=for-the-badge)](https://github.com/pspdev/psptoolchain-extra/actions?query=workflow%3ACI)
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/pspdev/psptoolchain-extra/CI-Docker?label=CI-Docker&logo=github&style=for-the-badge)](https://github.com/pspdev/psptoolchain-extra/actions?query=workflow%3ACI-Docker)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/pspdev/psptoolchain-extra/compilation.yml?branch=main&label=CI&logo=github&style=for-the-badge)](https://github.com/pspdev/psptoolchain-extra/actions?query=workflow%3ACI)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/pspdev/psptoolchain-extra/docker.yml?branch=main&label=CI-Docker&logo=github&style=for-the-badge)](https://github.com/pspdev/psptoolchain-extra/actions?query=workflow%3ACI-Docker)
 
 What does this do?
 ==================
