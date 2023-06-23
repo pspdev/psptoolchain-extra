@@ -14,7 +14,7 @@ jobs:
       matrix:
         os: [[alpine, bash], [fedora, bash]]
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - name: Install dependencies Alpine
       if: matrix.os[0] == 'alpine'
@@ -42,7 +42,7 @@ jobs:
       shell: ${{ matrix.os[1] }} {0}
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - name: Install on Ubuntu
       if: matrix.os[0] == 'ubuntu-latest'
