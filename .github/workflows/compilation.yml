@@ -65,7 +65,6 @@ jobs:
           base-devel git make texinfo flex bison patch binutils mingw-w64-i686-gcc mingw-w64-i686-dlfcn mingw-w64-i686-mpc 
           mingw-w64-i686-cmake mingw-w64-i686-python-pip mingw-w64-i686-libarchive mingw-w64-i686-openssl mingw-w64-i686-autotools
         update: true
-        shell: msys2 {0}
 
     - name: Compile Tools
       run: |
