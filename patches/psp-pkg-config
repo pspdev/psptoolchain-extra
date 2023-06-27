@@ -11,5 +11,4 @@ export PKG_CONFIG_SYSROOT_DIR=
 export PKG_CONFIG_LIBDIR=${PSPDEV}/psp/lib/pkgconfig:${PSPDEV}/psp/share/pkgconfig
 
 [[ "$1" == '--version' ]] && exec pkg-config --version
-exec pkg-config --define-prefix --static "$@"
-
+exec pkg-config --define-prefix --define-variable=PSPDEV=${PSPDEV} --static "$@"
