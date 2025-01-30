@@ -78,7 +78,11 @@ check_program   cmake
 check_program   gcc
 check_program   g++
 
-check_program   libtoolize
+if [ "$(uname)" != "Darwin" ]; then
+check_program libtoolize
+else
+check_program glibtoolize
+fi 
 
 if [ ${#missing_depends[@]} -ne 0 ]; then
     echo "Couldn't find dependencies:"
