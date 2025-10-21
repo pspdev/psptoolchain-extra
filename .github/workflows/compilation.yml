@@ -60,8 +60,7 @@ jobs:
       if: startsWith( matrix.os[0], 'macos' )
       run: |
         brew update
-        brew install automake bash openssl libarchive gpgme libtool
-        brew reinstall openssl@3 # https://github.com/Homebrew/homebrew-core/issues/169728#issuecomment-2074958306
+        brew install automake bash libarchive gpgme libtool
 
     - name: Compile Tools
       run: |
