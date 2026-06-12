@@ -67,7 +67,6 @@ check_program   automake
 if [ "${OSVER:0:5}" != MINGW ]; then
 check_program   meson
 check_program   ninja
-check_program   makepkg
 check_program   gpgrt-config
 # check_program   gpgme-config
 check_header    openssl             openssl/crypto.h openssl/include/openssl/crypto.h
