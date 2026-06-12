@@ -18,7 +18,7 @@ jobs:
     - name: Install dependencies Alpine
       if: matrix.os[0] == 'alpine'
       run: |
-        apk add --no-cache build-base bash git autoconf automake meson ninja-build cmake pkgconfig libarchive-dev openssl-dev gpgme-dev libtool
+        apk add --no-cache build-base bash git autoconf automake meson samurai cmake pkgconfig libarchive-dev openssl-dev gpgme-dev libtool
     
     - name: Install dependencies Fedora
       if: matrix.os[0] == 'fedora'
@@ -29,6 +29,7 @@ jobs:
 
     - name: Compile Tools
       run: |
+        chown -R $(id -nu):$(id -ng) .
         export PSPDEV=$PWD/pspdev
         export PATH=$PATH:$PSPDEV/bin
         ./build-all.sh
